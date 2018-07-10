@@ -1,0 +1,16 @@
+{
+  "token": "NDY2MDYwNzY3NzA4NDQ2NzQw.DiWkqw.dSf_mszmmtCiCf6wFsYtNBaJvNA",
+  "id": "466060767708446740",
+  "prefix": "Thanos ",
+  "messages" : {
+    "ban" : " was banned by Thanos, for the greater good of the universe",
+    "spared": " was spared by Thanos, for the greater good of the universe",
+    "banPM": "Hear me, and rejoice. You are about to die at the hand of the children of Thanos. Be thankful, that your meaningless lives are now contributed to the balance. Soon, you will have the great privilege of being saved by the great titan. Some of you may think this is suffering... no! It is salvation. The universal scales... tip toward balance because of your impending sacrifice. Smile... for even in death, you will have become children of Thanos!\n\n*Note: This bot cannot unban you- you must contact the server admins to get unbanned.*",
+    "sparedPM": "You were spared by Thanos."
+  },
+  "commands":{
+    "ban" : "ban",
+    "spare": "spare",
+    "superBan": "snap"
+  }
+}
