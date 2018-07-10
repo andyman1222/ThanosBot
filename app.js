@@ -34,7 +34,7 @@ client.on("guildDelete", guild => {
 
 client.on("message", async message => {
   var txt = message.content.split(' ');
-  if(message.content.indexOf(config.prefix) == 0){
+  if(message.content.indexOf(config.prefix) == 0 || message.mentions.users.first() == client.user){
     if(message.member.hasPermission("BAN_MEMBERS") || message.member.hasPermission("ADMINISTRATOR")){
       if(txt[1] == config.commands.ban){
         for(i = 2; i < txt.length; i++){
