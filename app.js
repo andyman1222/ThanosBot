@@ -34,41 +34,51 @@ client.on("guildDelete", guild => {
 
 client.on("message", async message => {
   var txt = message.content.split(' ');
-  if(message.content.indexOf(config.prefix) == 0 || message.mentions.users.first() == client.user){
+  if(message.content.indexOf(config.prefix) == 0){
     if(message.member.hasPermission("BAN_MEMBERS") || message.member.hasPermission("ADMINISTRATOR")){
       if(txt[1] == config.commands.ban){
         for(i = 2; i < txt.length; i++){
-          target = txt[i];
-          if(target == "me"){
-            target = message.author;
-          }
-          else target = message.guild.members.get(txt[i].substr(2, txt[i].length-3));
-            message.reply(target);
-            target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
-            message.guild.ban(target);
-            message.reply("" + target + config.messages.ban);
+          try{
+            target = txt[i];
+            if(target == "me"){
+              target = message.author;
+            }
+            else target = message.guild.members.get(target.replace(/\D/g,''));
+            console.log(txt[2])
+              target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
+              message.guild.ban(target);
+              message.reply("" + target + config.messages.ban);
+            }
+            catch(e){message.reply("Thanos is not powerful enough to ban " + target)}
         }
       }
 
       else if(txt[1] == config.commands.spare){
         for(i = 2; i < txt.length; i++){
-          target = txt[i];
-          if(target == "me"){
-            target = message.author;
+          try{
+            target = txt[i];
+            if(target == "me"){
+              target = message.author;
+            }
+            else target = message.guild.members.get(target.replace(/\D/g,''));
+            console.log(txt[2])
+            target.send("Message from " + message.guild.name + ": \n\n" + config.messages.sparedPM);
+            message.reply("" + target + config.messages.spared);
           }
-          else target = message.guild.members.get(txt[i].substr(2, txt[i].length-3));
-          target.send("Message from " + message.guild.name + ": \n\n" + config.messages.sparedPM);
-          message.reply("" + target + config.messages.spared);
+          catch(e){message.reply("Thanos is not powerful enough to spare " + target)}
         }
       }
 
       else if(txt[1] == config.commands.superBan){
         var len = message.guild.memberCount/2;
         for(i = 0; i < len; i++){
-          var target = message.guild.members.random();
-          target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
-          message.guild.ban(target);
-          message.reply("" + target + config.messages.ban);
+          try{
+            var target = message.guild.members.random();
+            target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
+            message.guild.ban(target);
+            message.reply("" + target + config.messages.ban);
+          }
+          catch(e){message.reply("Thanos is not powerful enough to spare " + target)}
         }
       }
       else {
