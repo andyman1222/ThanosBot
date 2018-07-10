@@ -11,6 +11,8 @@ OTHER WARNING: This bot ALSO has the ability to ban RANDOM USERS! Once again, us
 Summon Thanos by calling him. Type his name before your message ("Thanos " + whatever) or @ him ("@Thanos " + whatever)
 *He will tell you all of his commands that way.*
 
+NOTE: You have to move the ThanosBot role in server settings above all roles that you would like Thanos to balance, otherwise he won't have the power to do so.
+
 __Thanos can:__
 
 * ban: just specify whomst you want to ban and he will bring balance at your request
