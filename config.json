@@ -1,12 +1,19 @@
 {
-  "token": "Bot token here",
-  "id": "Bot ID here",
+  "token": "token here",
+  "id": "id here",
   "prefix": "Thanos ",
   "messages" : {
     "ban" : " was banned by Thanos, for the greater good of the universe",
-    "spared": " was spared by Thanos, for the greater good of the universe",
-    "banPM": "Hear me, and rejoice. You are about to die at the hand of the children of Thanos. Be thankful, that your meaningless lives are now contributed to the balance. Soon, you will have the great privilege of being saved by the great titan. Some of you may think this is suffering... no! It is salvation. The universal scales... tip toward balance because of your impending sacrifice. Smile... for even in death, you will have become children of Thanos!\n\n*Note: This bot cannot unban you- you must contact the server admins to get unbanned.*",
-    "sparedPM": "You were spared by Thanos."
+    "spare": " was spared by Thanos, for the greater good of the universe",
+    "banPM": "Hear me, and rejoice. You are about to die at the hand of the children of Thanos. Be thankful, that your meaningless lives are now contributed to the balance. Soon, you will have the great privilege of being saved by the great titan. Some of you may think this is suffering... no! It is salvation. The universal scales... tip toward balance because of your impending sacrifice. Smile... for even in death, you will have become children of Thanos!\n\n*You were banned. Note: This bot cannot unban you- you must contact the server admins to get unbanned.*",
+    "sparePM": "Hear me and rejoice! You have had the privilege of being saved by the Great Titan. You may think this is suffering. No... It is salvation. The universal scales tip toward balance because of their sacrifice. Smile... for those who were banned, you have become children of Thanos. \n\n*You were spared.*",
+    "thanosBan": "Thanos does not wish to commit suicide, so he will not ban himself.",
+    "thanosSpare": "Thanos has no need to spare himself.",
+    "selfBan": "Thanos cannot ban yourself at your own will, he believes that cannot lead to balance. Please ask someone who is more powerful than yourself to order for Thanos to balance.",
+    "selfSpare": "Thanos cannot spare yourself at your own will, he believes that cannot lead to balance. Please ask someone who is more powerful than yourself to order for Thanos to balance.",
+    "invalidPerm": "Thanos does not consider you worthy enough to control the Infinity Gautlet.*You need to have bannable permission to use Thanos.*",
+    "banNoName": "Please tell Thanos who to ban by including one or more users after (ex: 'Thanos ban me thanos @user1 @user2' and yes you could put 'me' or 'thanos' as users).",
+    "spareNoName": "Please tell Thanos who to spare by including one or more users after (ex: 'Thanos spare me thanos @user1 @user2' and yes you could put 'me' or 'thanos' as users)."
   },
   "commands":{
     "ban" : "ban",

@@ -31,53 +31,84 @@ client.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
 
-
 client.on("message", async message => {
   var txt = message.content.split(' ');
-  if(message.content.indexOf(config.prefix) == 0 || message.mentions.users.first() == client.user){
+
+  if(message.content.toLowerCase().indexOf(config.prefix.toLowerCase()) == 0){
+    var botMem = message.guild.members.get(config.id);
+    var botPos = botMem.highestRole.calculatedPosition;
     if(message.member.hasPermission("BAN_MEMBERS") || message.member.hasPermission("ADMINISTRATOR")){
       if(txt[1] == config.commands.ban){
-        for(i = 2; i < txt.length; i++){
-          target = txt[i];
-          if(target == "me"){
-            target = message.author;
+        if(txt.length > 2){
+          for(i = 2; i < txt.length; i++){
+            try{
+              var target = txt[i];
+              target = message.guild.members.get(target.replace(/\D/g,''));
+              if(target == message.member || txt[i].toLowerCase() == "me") message.reply(config.messages.selfBan);
+              else if(target == botMem || txt[i].toLowerCase() == "thanos") message.reply(config.messages.thanosBan);
+              else if(botPos < target.highestRole.calculatedPosition) message.reply("Thanos cannot ban " + target + ", he doesn't have enough power. Make sure he overpowers " + target + " by ensuring his highest role is higher than " + target + "'s highest role, which is " + target.highestRole);
+              else{
+                target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
+                message.guild.ban(target);
+                message.reply("" + target + config.messages.ban);
+              }
+            }
+            catch(e){
+              message.reply("Thanos does not know how to ban \"" + txt[i] + "\", he can only ban individual users or attempt to ban half of everyone on the server with `"+ config.commands.superBan + "`.");
+              console.log(e);
+            }
           }
-          else target = message.guild.members.get(txt[i].substr(2, txt[i].length-3));
-            message.reply(target);
-            target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
-            message.guild.ban(target);
-            message.reply("" + target + config.messages.ban);
-        }
+        } else message.reply(config.messages.banNoName);
       }
 
       else if(txt[1] == config.commands.spare){
-        for(i = 2; i < txt.length; i++){
-          target = txt[i];
-          if(target == "me"){
-            target = message.author;
+        if(txt.length > 2){
+          for(i = 2; i < txt.length; i++){
+            try{
+              var target = txt[i];
+              target = message.guild.members.get(target.replace(/\D/g,''));
+              if(target == message.member || txt[i].toLowerCase() == "me") message.reply(config.messages.selfSpare);
+              else if(target == botMem || txt[i].toLowerCase() == "thanos") message.reply(config.messages.thanosSpare);
+              else if(botPos < target.highestRole.calculatedPosition) message.reply("Thanos cannot spare " + target + ", he doesn't have enough power. Make sure he overpowers " + target + " by ensuring his highest role is higher than " + target + "'s highest role, which is " + target.highestRole);
+              else{
+                target.send("Message from " + message.guild.name + ": \n\n" + config.messages.sparePM);
+                message.reply("" + target + config.messages.spare);
+              }
+            }
+            catch(e){
+              message.reply("Thanos does not know how to spare \"" + txt[i] + "\", he can only spare one or more individual users.");
+              console.log(e);
+            }
           }
-          else target = message.guild.members.get(txt[i].substr(2, txt[i].length-3));
-          target.send("Message from " + message.guild.name + ": \n\n" + config.messages.sparedPM);
-          message.reply("" + target + config.messages.spared);
-        }
+        } else message.reply(config.messages.spareNoName);
       }
 
       else if(txt[1] == config.commands.superBan){
         var len = message.guild.memberCount/2;
         for(i = 0; i < len; i++){
-          var target = message.guild.members.random();
-          target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
-          message.guild.ban(target);
-          message.reply("" + target + config.messages.ban);
+          try{
+            var target = message.guild.members.random();
+              if(target == message.member)message.reply(config.messages.selfBan);
+              else if(target == botMem) message.reply(config.messages.thanosBan);
+              else if(botPos < target.highestRole.calculatedPosition) message.reply("Thanos cannot ban " + target + ", he doesn't have enough power. Make sure he overpowers " + target + " by ensuring his highest role is higher than " + target + "'s highest role, which is " + target.highestRole);
+              else{
+                target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
+                message.guild.ban(target);
+                message.reply("" + target + config.messages.ban);
+              }
+          }
+          catch(e){message.reply("Thanos does not know how to ban " + target + "."); console.log(e);}
+        }
+        for(target in message.guild.members){
+          target.send("Message from " + message.guild.name + ": \n\n" + config.messages.sparePM + "*You either asked Thanos to balance the server, were too powerful for Thanos to snap you, or he actually chose you to stay alive...*");
         }
       }
       else {
-        message.reply("Thanos can't do that. He can only be told to `" + config.commands.ban + "`, `" + config.commands.spare + "`, or `" + config.commands.superBan + "`.");
+        message.reply("Thanos can't do that. He can only be told to `" + config.commands.ban + "` or `" + config.commands.spare + "` one or more users, or he could `" + config.commands.superBan + "`, which will attempt to ban half the server at random.");
       }
     }
-    else message.reply("Thanos does not consider you worthy enough to control the Infinity Gautlet.");
+    else message.reply(config.messages.invalidPerm);
   }
 });
 
 client.login(config.token);
-           
