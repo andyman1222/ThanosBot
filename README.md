@@ -6,18 +6,17 @@ This bot has the ability to let ANYONE with ADMIN or BAN USERS permission BAN an
 
 OTHER WARNING: This bot ALSO has the ability to ban RANDOM USERS! Once again, use at your own risk!!!
 
+Due to Discord API limits, this bot will not ban anyone who is admin, or anyone with a higher role than the bot's highest role.
+
 ## How to use
-
-Summon Thanos by calling him. Type his name before your message ("Thanos " + whatever)
-*He will tell you all of his commands that way.*
-
-NOTE: You have to move the ThanosBot role in server settings above all roles that you would like Thanos to balance, otherwise he won't have the power to do so.
+0. You have to move the ThanosBot role in server settings above all roles that you would like Thanos to balance, otherwise he won't have the power to do so.
+Summon Thanos by calling him. Type his name before your message ("Thanos " + command (listed below))
 
 __Thanos can:__
 
-* ban: just specify whomst you want to ban and he will bring balance at your request
-* spare: specify whomst you want to spare and he will say they are spared. However their fate may change... (aka they can still get banned)
-* snap: Thanos will snap his fingers to bring instant balance to the number of users on your server (excluding admins and bots I think)
+* **ban**: just specify whomst you want to ban and he will bring balance at your request. You can have one or more persons listed. You can also use "Thanos" or "me" as a person.
+* **spare**: specify whomst you want to spare and he will say they are spared. However their fate may change... (aka they can still get banned) Again you can list one or more persons.
+* **snap**: Thanos will snap his fingers to bring instant balance to the number of users on your server (excluding admins and bots I think)
 
 ### Building
 
