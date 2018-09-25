@@ -33,7 +33,6 @@ client.on("guildDelete", guild => {
 
 client.on("message", async message => {
   var txt = message.content.split(' ');
-<<<<<<< HEAD
 
   if(message.content.toLowerCase().indexOf(config.prefix.toLowerCase()) == 0){
     var botMem = message.guild.members.get(config.id);
@@ -82,41 +81,6 @@ client.on("message", async message => {
             }
           }
         } else message.reply(config.messages.spareNoName);
-=======
-  if(message.content.indexOf(config.prefix) == 0){
-    if(message.member.hasPermission("BAN_MEMBERS") || message.member.hasPermission("ADMINISTRATOR")){
-      if(txt[1] == config.commands.ban){
-        for(i = 2; i < txt.length; i++){
-          try{
-            target = txt[i];
-            if(target == "me"){
-              target = message.author;
-            }
-            else target = message.guild.members.get(target.replace(/\D/g,''));
-            console.log(txt[2])
-              target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
-              message.guild.ban(target);
-              message.reply("" + target + config.messages.ban);
-            }
-            catch(e){message.reply("Thanos is not powerful enough to ban " + target)}
-        }
-      }
-
-      else if(txt[1] == config.commands.spare){
-        for(i = 2; i < txt.length; i++){
-          try{
-            target = txt[i];
-            if(target == "me"){
-              target = message.author;
-            }
-            else target = message.guild.members.get(target.replace(/\D/g,''));
-            console.log(txt[2])
-            target.send("Message from " + message.guild.name + ": \n\n" + config.messages.sparedPM);
-            message.reply("" + target + config.messages.spared);
-          }
-          catch(e){message.reply("Thanos is not powerful enough to spare " + target)}
-        }
->>>>>>> 1eb7d432eba2f58eea32faa691d6e468ca304d4f
       }
 
       else if(txt[1] == config.commands.superBan){
@@ -124,7 +88,6 @@ client.on("message", async message => {
         for(i = 0; i < len; i++){
           try{
             var target = message.guild.members.random();
-<<<<<<< HEAD
               if(target == message.member)message.reply(config.messages.selfBan);
               else if(target == botMem) message.reply(config.messages.thanosBan);
               else if(botPos < target.highestRole.calculatedPosition) message.reply("Thanos cannot ban " + target + ", he doesn't have enough power. Make sure he overpowers " + target + " by ensuring his highest role is higher than " + target + "'s highest role, which is " + target.highestRole);
@@ -138,13 +101,6 @@ client.on("message", async message => {
         }
         for(target in message.guild.members){
           target.send("Message from " + message.guild.name + ": \n\n" + config.messages.sparePM + "*You either asked Thanos to balance the server, were too powerful for Thanos to snap you, or he actually chose you to stay alive...*");
-=======
-            target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
-            message.guild.ban(target);
-            message.reply("" + target + config.messages.ban);
-          }
-          catch(e){message.reply("Thanos is not powerful enough to spare " + target)}
->>>>>>> 1eb7d432eba2f58eea32faa691d6e468ca304d4f
         }
       }
       else {
@@ -155,9 +111,4 @@ client.on("message", async message => {
   }
 });
 
-<<<<<<< HEAD
 client.login(config.token);
-=======
-client.login(config.token);
-           
->>>>>>> 1eb7d432eba2f58eea32faa691d6e468ca304d4f

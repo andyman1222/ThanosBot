@@ -1,0 +1,12 @@
+{
+  "name": "ThanosBot",
+  "version": "0.0.1",
+  "description": "A bot that can create balance amongst the number of users on a Discord server",
+  "main": "app.js",
+  "repository": "git@github.com:AustinPaquette/ThanosBot.git",
+  "author": "Austin Paquette <austin@paquette.io>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
