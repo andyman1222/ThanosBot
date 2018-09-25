@@ -1,5 +1,9 @@
 # Thanos is on Discord now!!!
 
+## Note
+
+Any public link to add the bot (at least from me) is dead. You have to sel-host the bot yourself.
+
 ## Important warning
 
 This bot has the ability to let ANYONE with ADMIN or BAN USERS permission BAN anyone on the server! Use caution when using this, or don't use it at all!
@@ -23,8 +27,8 @@ __Thanos can:__
 Requires nodejs
 
 After getting nodejs and setting up npm and all, retrieve the code, then cd into the folder containing the code, then run: 
-`npm install discord.js`
+`npm install`
 
 Then set up `config.json` as needed
 
-Then `node app.js`
+Then `node app.js` or `npm start` if I'm correct...
