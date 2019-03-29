@@ -6,7 +6,10 @@
   "repository": "git@github.com:andyman1222/ThanosBot.git",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "bufferutil": "^4.0.1",
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^11.4.2",
+    "winston": "^3.2.1"
   },
   "scripts": {
     "start": "node ./app.js"

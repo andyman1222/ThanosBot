@@ -38,7 +38,7 @@ client.on("message", async message => {
     var botMem = message.guild.members.get(config.id);
     var botPos = botMem.highestRole.calculatedPosition;
     if(message.member.hasPermission("BAN_MEMBERS") || message.member.hasPermission("ADMINISTRATOR")){
-      if(txt[1] == config.commands.kick){
+      if(txt[1] == config.commands.ban){
         if(txt.length > 2){
           for(i = 2; i < txt.length; i++){
             try{
@@ -46,15 +46,15 @@ client.on("message", async message => {
               target = message.guild.members.get(target.replace(/\D/g,''));
               if(target == message.member || txt[i].toLowerCase() == "me") message.reply(config.messages.selfBan);
               else if(target == botMem || txt[i].toLowerCase() == "thanos") message.reply(config.messages.thanosBan);
-              else if(botPos < target.highestRole.calculatedPosition) message.reply("Thanos cannot kick " + target + ", he doesn't have enough power. Make sure he overpowers " + target + " by ensuring his highest role is higher than " + target + "'s highest role, which is " + target.highestRole);
+              else if(botPos < target.highestRole.calculatedPosition) message.reply("Thanos cannot ban " + target + ", he doesn't have enough power. Make sure he overpowers " + target + " by ensuring his highest role is higher than " + target + "'s highest role, which is " + target.highestRole);
               else{
-                target.send("Message from " + message.guild.name + ": \n\n" + config.messages.kickPM);
-                target.kick();
-                message.reply("" + target + config.messages.kick);
+                target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
+                message.guild.ban(target);
+                message.reply("" + target + config.messages.ban);
               }
             }
             catch(e){
-              message.reply("Thanos does not know how to kick \"" + txt[i] + "\", he can only kick individual users or attempt to kick half of everyone on the server with `"+ config.commands.superBan + "`.");
+              message.reply("Thanos does not know how to ban \"" + txt[i] + "\", he can only ban individual users or attempt to ban half of everyone on the server with `"+ config.commands.superBan + "`.");
               console.log(e);
             }
           }
@@ -92,12 +92,12 @@ client.on("message", async message => {
               else if(target == botMem) message.reply(config.messages.thanosBan);
               else if(botPos < target.highestRole.calculatedPosition) message.reply("Thanos cannot ban " + target + ", he doesn't have enough power. Make sure he overpowers " + target + " by ensuring his highest role is higher than " + target + "'s highest role, which is " + target.highestRole);
               else{
-                target.send("Message from " + message.guild.name + ": \n\n" + config.messages.kickPM);
-                target.kick();
-                message.reply("" + target + config.messages.kick);
+                target.send("Message from " + message.guild.name + ": \n\n" + config.messages.banPM);
+                message.guild.ban(target);
+                message.reply("" + target + config.messages.ban);
               }
           }
-          catch(e){message.reply("Thanos does not know how to kick " + target + "."); console.log(e);}
+          catch(e){message.reply("Thanos does not know how to ban " + target + "."); console.log(e);}
         }
         for(target in message.guild.members){
           target.send("Message from " + message.guild.name + ": \n\n" + config.messages.sparePM + "*You either asked Thanos to balance the server, were too powerful for Thanos to snap you, or he actually chose you to stay alive...*");

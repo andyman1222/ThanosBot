@@ -1,6 +1,12 @@
 # Dependancies
 node_modules
 
+# Ignore config
+config.json
+
+# Ignore output
+output
+
 # Package Lockfile
 package-lock.json
 
